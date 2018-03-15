@@ -50,11 +50,20 @@ func playerTurn() {
 		fmt.Println("You chose to hit")
 		pHand = append(pHand, startDeck[getSecureRandInt(51).Int64()])
 		fmt.Println("You added a card. Your new hand is ", pHand)
+		playerTurn()
 	} else if option == 2 {
 		fmt.Println("You chose to stand")
+		dealerTurn()
 	} else {
 		fmt.Println("You done messed up A-ARON pick again")
 		playerTurn()
 	}
 	
+}
+
+func dealerTurn() {
+	for len(dHand) < 4 {
+	dHand = append(dHand, startDeck[getSecureRandInt(51).Int64()])
+	fmt.Println("The Dealer has \n", dHand)
+	}
 }
