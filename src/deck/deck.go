@@ -6,15 +6,22 @@ import "math/big"
 
 var suits = [4]string{"Diamonds", "Spades", "Hearts", "Clubs"}
 var values = [13]string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
+var value = [13]int{11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10}
 
 var startDeck []string
 var pHand []string
 var dHand []string
+
 // Deck is thge main function exporting my deck making ability
 func Deck() {
 
-
-	
+	// startDeck := map[string]int{
+	// 	for i := 0; i < len(suits); i++ {
+	// 		for j := 0; j < len(values); j++ {
+	// 			values[i] + " " value[j],
+	// 		}
+	// 	}
+	// }
 
 	for i := 0; i < len(suits); i++ {
 		for j := 0; j < len(values); j++ {
@@ -32,7 +39,6 @@ func Deck() {
 	fmt.Println("The Player has", pHand)
 	fmt.Println("The Dealer has ", dHand)
 	playerTurn()
-
 
 }
 func getSecureRandInt(max int64) *big.Int {
@@ -58,12 +64,12 @@ func playerTurn() {
 		fmt.Println("You done messed up A-ARON pick again")
 		playerTurn()
 	}
-	
+
 }
 
 func dealerTurn() {
 	for len(dHand) < 4 {
-	dHand = append(dHand, startDeck[getSecureRandInt(51).Int64()])
-	fmt.Println("The Dealer has \n", dHand)
+		dHand = append(dHand, startDeck[getSecureRandInt(51).Int64()])
+		fmt.Println("The Dealer has \n", dHand)
 	}
 }
